@@ -1,0 +1,8 @@
+.header {
+    text-align: center;
+}
+.list {
+    text-align: left;
+    line-height: 6px;
+    list-style-type: none;
+}

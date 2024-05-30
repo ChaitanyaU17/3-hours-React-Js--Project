@@ -1,0 +1,18 @@
+.mid {
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5);
+    width: 350px;
+    padding: 3px 5px 3px 5px;
+    margin: 5px;
+    margin-left: 440px;
+    position: fixed;
+    top: 250px;
+    right: 440px; 
+}
+
+
+.btn {
+    text-align: end;
+}
+.closeBtn {
+    margin-left: 5px;
+}
