@@ -1,12 +1,17 @@
 import React, { useContext } from 'react';
 import classes from './NoteBook.module.css';
-import NoteContext from "./NoteContext";
+import NoteContext from './NoteContext';
 
 const NoteBook = () => {
-  const { notes, deleteNote, searchNote, searchedTerm, setShowAddNote } = useContext(NoteContext);
+  const { notes, deleteNote, searchNote, searchedTerm, setShowAddNote, setEditNoteId } = useContext(NoteContext);
 
   const handleSearch = (event) => {
     searchNote(event.target.value.toLowerCase());
+  };
+
+  const handleEditNote = (noteId) => {
+    setEditNoteId(noteId);
+    setShowAddNote(true);
   };
 
   const filteredNotes = searchedTerm ? notes.filter((note) => note.title.toLowerCase().includes(searchedTerm)) : notes;
@@ -19,19 +24,17 @@ const NoteBook = () => {
       </label>
       <p>Total Notes: <span>{notes.length}</span></p>
       <p>Showing: <span>{filteredNotes.length}</span></p>
-      <button onClick={() => setShowAddNote(true)}>Add New Note</button>
-      <div>
+      <button onClick={() => { setEditNoteId(null); setShowAddNote(true); }}>Add New Note</button>
       <ul className={classes.list}>
         {filteredNotes.map((note) => (
-          <li key={note.id}>
+          <li key={note.id} className={classes.noteItem}>
             <h2>{note.title}</h2>
             <p>{note.description}</p>
             <button onClick={() => deleteNote(note.id)}>Delete</button>
+            <button className={classes.edit} onClick={() => handleEditNote(note.id)}>Edit</button>
           </li>
         ))}
       </ul>
-      </div>
-     
     </div>
   );
 };

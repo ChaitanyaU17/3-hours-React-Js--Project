@@ -1,18 +1,32 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import classes from "./AddNote.module.css";
 import NoteContext from "./NoteContext";
 
 const AddNote = () => {
-  const { addNote, setShowAddNote, showAddNote } = useContext(NoteContext);
+  const { addNote, editNote, setShowAddNote, showAddNote, editNoteId, notes } = useContext(NoteContext);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
 
-  const handleAddNote = (event) => {
+  useEffect(() => {
+    if (editNoteId) {
+      const noteToEdit = notes.find(note => note.id === editNoteId);
+      if (noteToEdit) {
+        setTitle(noteToEdit.title);
+        setDescription(noteToEdit.description);
+      }
+    }
+  }, [editNoteId, notes]);
+
+  const handleAddOrUpdateNote = (event) => {
     event.preventDefault();
-    addNote(title, description);
+    if (editNoteId) {
+      editNote(editNoteId, title, description);
+    } else {
+      addNote(title, description);
+    }
     setTitle('');
     setDescription('');
-    setShowAddNote(true);
+    setShowAddNote(false);
   };
 
   if (!showAddNote) {
@@ -21,7 +35,7 @@ const AddNote = () => {
 
   return (
     <div className={classes.mid}>
-      <h2>Add New Note</h2>
+      <h2>{editNoteId ? "Edit Note" : "Add New Note"}</h2>
       <div>
         <label>
           Note Title: <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
@@ -31,7 +45,7 @@ const AddNote = () => {
         </p>
       </div>
       <div className={classes.btn}>
-        <button onClick={handleAddNote}>Add To Book</button>
+        <button onClick={handleAddOrUpdateNote}>{editNoteId ? "Update" : "Add To Book"}</button>
         <button className={classes.closeBtn} onClick={() => setShowAddNote(false)}>Close</button>
       </div>
     </div>
