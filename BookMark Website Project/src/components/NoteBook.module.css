@@ -1,0 +1,21 @@
+.header {
+    text-align: center;
+    padding: 1rem;
+    margin: 1rem;
+    line-height: 30px;
+}
+
+.title {
+    font-size: 2em;
+    font: bold;
+   padding: 8px;
+}
+.input {
+    border: solid 1px rgb(157, 152, 152);
+}
+.btn {
+    background-color: rgb(219, 213, 213);
+    padding: 4px 6px;
+    margin: 4px;
+    border-radius: 10px;
+}

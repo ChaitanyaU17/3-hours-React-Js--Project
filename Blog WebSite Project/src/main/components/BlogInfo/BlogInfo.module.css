@@ -1,0 +1,39 @@
+/* src/components/BlogInfo.module.css */
+.blogInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 400px;
+}
+
+.section label {
+    margin-bottom: 0.5rem;
+}
+
+.section input {
+    padding: 0.5rem;
+    border-radius: 4px;
+}
+
+.buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.buttons button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+
+
+

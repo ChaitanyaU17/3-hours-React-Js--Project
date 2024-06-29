@@ -1,0 +1,32 @@
+.add {
+    border: solid 1px black;
+   line-height: 30px;
+    width: 400px;
+    height: 190px;
+    margin-left: 35%;
+    padding: 10px;
+}
+
+.inp1 {
+   border: 1px solid black;
+   padding-left: 4px;
+    margin-left: 4px;
+    margin-bottom: 4px;
+}
+.inp2 {
+    border: 1px solid black;
+    padding-left: 4px;
+    margin-left: 4px;
+}
+.desc {
+    height: 34px;
+    padding: 4px;
+    margin-top: 4px;
+}
+.btn1, .btn2 {
+    margin-top: 9px;
+    justify-items: end;
+    border: 1px solid gray;
+    padding: 0 4px;
+    margin: 4px;
+}
